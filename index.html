@@ -273,7 +273,7 @@
             <h2>大模型之前的工作</h2>
             <i class="fas fa-chevron-right arrow"></i>
         </div>
-        <div class="section-content" style="display: none;">
+        <div class="section-content">
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
                     <h3>自然语言处理工程师 | 讯科人工智能</h3>
@@ -315,7 +315,7 @@
             <h2>教育与认证</h2>
             <i class="fas fa-chevron-right arrow"></i>
         </div>
-        <div class="section-content" style="display: none;">
+        <div class="section-content">
             <p><strong>计算机科学硕士</strong> | 北京大学 | 2014年 - 2016年</p>
             <p><strong>计算机科学与技术学士</strong> | 浙江大学 | 2010年 - 2014年</p>
             <p><strong>专业认证</strong>: AWS机器学习专业认证、Google TensorFlow开发者认证</p>
@@ -338,6 +338,14 @@
             // 展开所有子部分
             const llmSubsections = llmSection.querySelectorAll('.subsection-content');
             llmSubsections.forEach(sub => sub.style.display = 'block');
+            
+            // 折叠其他部分
+            const otherSections = document.querySelectorAll('.resume-section:not(#llm-section) .section-content');
+            otherSections.forEach(section => section.style.display = 'none');
+            
+            // 折叠其他部分的箭头
+            const otherArrows = document.querySelectorAll('.resume-section:not(#llm-section) .arrow');
+            otherArrows.forEach(arrow => arrow.classList.remove('expanded'));
         });
         
         function toggleSection(element) {
