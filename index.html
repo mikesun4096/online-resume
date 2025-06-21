@@ -5,80 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>技术人员简历</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
 
         body {
-            background-color: #f9fbfd;
+            background-color: #f8fcff;
             color: #333;
             line-height: 1.6;
             padding: 20px;
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .pdf-download {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
         }
 
         header {
             text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #3498db, #1abc9c);
+            padding: 50px 20px 40px;
+            margin: 20px 0 30px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
             color: white;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 18px rgba(52, 152, 219, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -70px;
+            right: -70px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
         }
 
         .name {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .title {
             font-size: 1.5rem;
             font-weight: 400;
-            opacity: 0.9;
+            opacity: 0.92;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
         }
 
         .contact {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 35px;
+            margin-top: 25px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 1rem;
+            font-size: 1.05rem;
+            opacity: 0.95;
         }
 
         .contact-item i {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            opacity: 0.9;
         }
 
         .resume-section {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
             overflow: hidden;
+            border: 1px solid #e3f2fd;
         }
 
         .section-header {
             padding: 20px;
-            background-color: #ecf0f1;
+            background-color: #ecf5fa;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid #ddd;
+            transition: background 0.3s ease;
+        }
+
+        .section-header:hover {
+            background-color: #e1f0fa;
         }
 
         .section-header h2 {
@@ -86,6 +152,14 @@
             font-size: 1.8rem;
             font-weight: 600;
             margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header h2 i {
+            font-size: 1.4rem;
+            color: #3498db;
         }
 
         .section-content {
@@ -94,8 +168,8 @@
 
         .section-content p {
             margin-bottom: 20px;
-            font-size: 1.05rem;
-            color: #555;
+            font-size: 1.06rem;
+            color: #444;
             line-height: 1.7;
         }
 
@@ -103,6 +177,8 @@
             transition: transform 0.3s ease;
             font-size: 1.4rem;
             color: #3498db;
+            min-width: 25px;
+            text-align: center;
         }
 
         .arrow.expanded {
@@ -110,25 +186,24 @@
         }
 
         .subsection {
-            margin-bottom: 25px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 25px;
-        }
-
-        .subsection:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
+            margin-bottom: 30px;
+            border-left: 3px solid #3498db;
+            padding-left: 15px;
         }
 
         .subsection-header {
             cursor: pointer;
             padding: 15px;
-            background-color: #f8f9fa;
+            background-color: #f8fbfe;
             border-radius: 6px;
             display: flex;
             align-items: center;
             margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .subsection-header:hover {
+            background-color: #e8f4fe;
         }
 
         .subsection-header h3 {
@@ -136,70 +211,124 @@
             font-size: 1.4rem;
             color: #2c3e50;
             flex-grow: 1;
+            font-weight: 600;
         }
 
         .subsection-content {
             padding: 0 15px;
+            border-radius: 0 0 6px 6px;
         }
 
         .subsection-content p {
             margin-bottom: 15px;
-            color: #555;
+            color: #444;
         }
 
         .subsection-content ul {
-            padding-left: 20px;
+            padding-left: 25px;
             margin-bottom: 15px;
-            color: #555;
+            color: #444;
         }
 
         .subsection-content ul li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .subsection-content ul li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
         }
 
         .time-period {
             display: inline-block;
-            background-color: #e3f2fd;
+            background: linear-gradient(to right, #e3f2fd, #e1f5fe);
             color: #1976d2;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-top: 8px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 10px 0 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             margin-top: 40px;
-            color: #7f8c8d;
+            color: #607d8b;
+            font-size: 0.95rem;
+            border-top: 1px solid #eceff1;
+            background: #f8fcff;
+            border-radius: 10px;
+        }
+
+        .tag-cloud {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 15px;
+            border-radius: 15px;
             font-size: 0.9rem;
-            border-top: 1px solid #eee;
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
             header {
-                padding: 25px 15px;
+                padding: 30px 15px;
             }
             
             .name {
-                font-size: 2rem;
+                font-size: 2.1rem;
             }
             
             .contact {
-                flex-direction: column;
-                gap: 12px;
+                gap: 20px;
+            }
+            
+            .contact-item {
+                font-size: 0.95rem;
+            }
+            
+            .pdf-download {
+                top: 10px;
+                right: 10px;
+                font-size: 0.9rem;
+                padding: 10px 16px;
             }
             
             .section-content {
                 padding: 15px;
             }
+            
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
 <body>
+    <button class="pdf-download" id="downloadPDF">
+        <i class="fas fa-file-pdf"></i> 下载PDF简历
+    </button>
+    
     <header>
         <h1 class="name">张明</h1>
-        <h2 class="title">资深AI工程师 / 大模型专家</h2>
+        <h2 class="title">高级AI工程师 / 大模型研发专家</h2>
         <div class="contact">
             <div class="contact-item">
                 <i class="fas fa-envelope"></i> zhangming@example.com
@@ -218,50 +347,63 @@
     
     <div class="resume-section">
         <div class="section-header" onclick="toggleSection(this)">
-            <h2>专业技能</h2>
+            <h2><i class="fas fa-user-tie"></i> 专业技能</h2>
             <i class="fas fa-chevron-right arrow expanded"></i>
         </div>
         <div class="section-content">
-            <p>拥有8年人工智能与软件开发经验，专注于自然语言处理与大模型开发。熟练掌握大模型训练与部署全流程，在语言模型优化、多模态理解、提示工程等方面有丰富实践经验。擅长Python、PyTorch、TensorFlow、Hugging Face生态系统与云计算平台。</p>
+            <p>资深AI工程师，8年人工智能领域经验，专长于大规模语言模型设计与优化。在NLP创新应用、模型压缩与高性能推理领域有深入研究和丰富实践经验。</p>
+            
+            <div class="tag-cloud">
+                <span class="tag">Python</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">Transformer</span>
+                <span class="tag">Hugging Face</span>
+                <span class="tag">模型量化</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">多模态模型</span>
+                <span class="tag">RAG框架</span>
+                <span class="tag">LLM微调</span>
+                <span class="tag">分布式训练</span>
+            </div>
         </div>
     </div>
     
     <div class="resume-section" id="llm-section">
         <div class="section-header" onclick="toggleSection(this)">
-            <h2>大模型相关工作</h2>
+            <h2><i class="fas fa-brain"></i> 大模型相关工作</h2>
             <i class="fas fa-chevron-right arrow expanded"></i>
         </div>
         <div class="section-content">
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>高级AI工程师 | 深智科技有限公司</h3>
+                    <h3>首席AI工程师 | 深智科技有限公司</h3>
                     <i class="fas fa-chevron-right arrow expanded"></i>
                 </div>
                 <div class="subsection-content">
                     <span class="time-period">2021年6月 - 至今</span>
                     <ul>
-                        <li>设计并开发企业级大语言模型平台，支持多轮对话、知识检索等核心功能</li>
-                        <li>优化百亿参数大模型推理效率，部署成本降低42%，响应时间减少35%</li>
-                        <li>研发模型微调框架，实现领域知识的高效注入，准确率提升18%</li>
-                        <li>建立大模型安全评估体系，显著降低幻觉与偏见问题的发生率</li>
-                        <li>领导6人技术团队完成3项关键模型优化项目，获得年度创新奖</li>
+                        <li>主导设计企业级大语言模型平台，支持动态知识注入与多轮对话管理</li>
+                        <li>优化百亿参数模型推理性能，实现GPU内存占用减少40%，推理速度提升50%</li>
+                        <li>研发领域自适应微调框架，在金融、医疗等垂直领域提升模型专业性</li>
+                        <li>设计多智能体协作架构，解决复杂任务拆解与执行问题</li>
+                        <li>构建模型安全防护体系，通过对抗训练减少幻觉问题发生率70%</li>
                     </ul>
                 </div>
             </div>
             
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>大模型研究项目</h3>
+                    <h3>大语言模型研究项目</h3>
                     <i class="fas fa-chevron-right arrow expanded"></i>
                 </div>
                 <div class="subsection-content">
                     <span class="time-period">2020年9月 - 2021年5月</span>
                     <ul>
-                        <li>开发中文领域预训练语言模型（基于Transformer架构）</li>
-                        <li>设计新型注意力机制，在长文本理解任务中实现SOTA性能</li>
-                        <li>提出参数高效微调方法，千样本场景下模型性能接近全量微调</li>
-                        <li>构建高质量中文指令数据集，覆盖200+任务类型</li>
-                        <li>项目成果发表在ACL 2021会议，并申请两项相关专利</li>
+                        <li>设计并训练中文基础大模型（参数量13B），在CEval、CMMLU等中文基准测试中排名前5</li>
+                        <li>提出分层知识注入方法，显著提升模型在专业领域的表现</li>
+                        <li>开发高效模型微调算法，在千样本场景下达到全量微调90%性能</li>
+                        <li>构建多维度评估体系，覆盖功能性、安全性、认知能力等12个维度</li>
+                        <li>研究成果发表于ACL、EMNLP等顶会，获两项国家发明专利</li>
                     </ul>
                 </div>
             </div>
@@ -270,40 +412,40 @@
     
     <div class="resume-section">
         <div class="section-header" onclick="toggleSection(this)">
-            <h2>大模型之前的工作</h2>
+            <h2><i class="fas fa-layer-group"></i> 大模型之前的工作</h2>
             <i class="fas fa-chevron-right arrow"></i>
         </div>
-        <div class="section-content">
+        <div class="section-content" style="display: none;">
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>自然语言处理工程师 | 讯科人工智能</h3>
+                    <h3>NLP算法专家 | 讯科人工智能</h3>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
                 <div class="subsection-content">
                     <span class="time-period">2018年3月 - 2020年8月</span>
                     <ul>
-                        <li>开发基于BERT的文本分类与实体识别系统，准确率达到95.3%</li>
-                        <li>设计端到端的文本语义匹配模型，应用于智能客服系统</li>
-                        <li>优化模型训练流水线，数据处理效率提升60%</li>
-                        <li>构建文本增强系统，显著提升模型在低资源场景下的表现</li>
-                        <li>主导技术分享会20+场，培养新人工程师15名</li>
+                        <li>构建基于BERT的知识图谱问答系统，准确率达93.5%</li>
+                        <li>设计多任务联合学习框架，统一处理实体识别、关系抽取等任务</li>
+                        <li>优化文本增强流程，解决低资源场景下的模型泛化问题</li>
+                        <li>开发分布式训练平台，缩短模型迭代周期50%</li>
+                        <li>主持NLP技术分享20余场，培养算法工程师10+</li>
                     </ul>
                 </div>
             </div>
             
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>软件开发工程师 | 云创科技</h3>
+                    <h3>高级软件工程师 | 云创科技</h3>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
                 <div class="subsection-content">
                     <span class="time-period">2016年7月 - 2018年2月</span>
                     <ul>
-                        <li>设计并实现分布式数据采集系统，日处理能力达2亿文档</li>
-                        <li>开发高性能文本处理管道，支持多语言实体抽取</li>
-                        <li>构建自动化运维平台，服务部署效率提升75%</li>
-                        <li>优化数据处理算法，内存占用减少40%，运行速度提升3倍</li>
-                        <li>主导完成系统架构升级，顺利支撑业务规模10倍增长</li>
+                        <li>构建日处理20TB的分布式数据平台，支持毫秒级查询</li>
+                        <li>设计动态数据管道，实现多源异构数据实时整合</li>
+                        <li>开发高性能实体识别引擎，支持16种语言的并行处理</li>
+                        <li>优化内存管理策略，系统吞吐量提升300%</li>
+                        <li>主导微服务架构转型，系统可用性达99.99%</li>
                     </ul>
                 </div>
             </div>
@@ -312,25 +454,42 @@
     
     <div class="resume-section">
         <div class="section-header" onclick="toggleSection(this)">
-            <h2>教育与认证</h2>
+            <h2><i class="fas fa-graduation-cap"></i> 教育与认证</h2>
             <i class="fas fa-chevron-right arrow"></i>
         </div>
-        <div class="section-content">
-            <p><strong>计算机科学硕士</strong> | 北京大学 | 2014年 - 2016年</p>
-            <p><strong>计算机科学与技术学士</strong> | 浙江大学 | 2010年 - 2014年</p>
-            <p><strong>专业认证</strong>: AWS机器学习专业认证、Google TensorFlow开发者认证</p>
-            <p><strong>学术发表</strong>: ACL、EMNLP等国际会议发表论文7篇，累计引用次数350+</p>
+        <div class="section-content" style="display: none;">
+            <div class="subsection">
+                <div class="subsection-content">
+                    <p><strong>计算机科学硕士</strong> | 清华大学人工智能实验室 | 2014年 - 2016年</p>
+                    <p><strong>计算机科学与技术学士</strong> | 上海交通大学 | 2010年 - 2014年</p>
+                    
+                    <div class="time-period" style="margin-top: 20px; margin-bottom: 15px;">专业认证</div>
+                    <ul>
+                        <li>AWS机器学习专家认证</li>
+                        <li>Google TensorFlow开发者认证</li>
+                        <li>NVIDIA深度学习架构师认证</li>
+                    </ul>
+                    
+                    <div class="time-period" style="margin-top: 20px; margin-bottom: 15px;">学术成果</div>
+                    <ul>
+                        <li>ACL、EMNLP、NeurIPS等顶会发表论文8篇</li>
+                        <li>担任多个AI顶会审稿人</li>
+                        <li>参与国家重大AI专项研究</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     
     <footer>
-        <p>© 2023 张明的简历 | 最后更新于2023年11月</p>
+        <p>© 2024 张明的简历 | 本简历使用HTML5实现，支持响应式浏览与PDF导出</p>
+        <p style="margin-top: 8px; font-size: 0.9rem;">最后更新：2024年3月</p>
     </footer>
     
     <script>
         // 页面加载时初始化状态
         document.addEventListener('DOMContentLoaded', function() {
-            // 展开大模型工作部分及其所有子部分
+            // 展开大模型工作部分
             const llmSection = document.getElementById('llm-section');
             const llmContent = llmSection.querySelector('.section-content');
             llmContent.style.display = 'block';
@@ -338,16 +497,9 @@
             // 展开所有子部分
             const llmSubsections = llmSection.querySelectorAll('.subsection-content');
             llmSubsections.forEach(sub => sub.style.display = 'block');
-            
-            // 折叠其他部分
-            const otherSections = document.querySelectorAll('.resume-section:not(#llm-section) .section-content');
-            otherSections.forEach(section => section.style.display = 'none');
-            
-            // 折叠其他部分的箭头
-            const otherArrows = document.querySelectorAll('.resume-section:not(#llm-section) .arrow');
-            otherArrows.forEach(arrow => arrow.classList.remove('expanded'));
         });
         
+        // 折叠/展开主部分
         function toggleSection(element) {
             const section = element.closest('.resume-section');
             const content = section.querySelector('.section-content');
@@ -362,6 +514,7 @@
             }
         }
         
+        // 折叠/展开子部分
         function toggleSubsection(element) {
             const subsection = element.closest('.subsection');
             const content = subsection.querySelector('.subsection-content');
@@ -375,6 +528,28 @@
                 arrow.classList.add('expanded');
             }
         }
+        
+        // PDF下载功能
+        document.getElementById('downloadPDF').addEventListener('click', function() {
+            // 隐藏下载按钮
+            const button = this;
+            button.style.display = 'none';
+            
+            // 生成PDF选项
+            const options = {
+                margin: 10,
+                filename: '张明-技术人员简历.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // 将整个body转为PDF
+            html2pdf().set(options).from(document.body).save().then(() => {
+                // 转换完成后重新显示按钮
+                button.style.display = 'flex';
+            });
+        });
     </script>
 </body>
 </html>
