@@ -248,6 +248,24 @@
             margin-left: -1em;
         }
 
+	.subsection-content ul li ul {
+            padding-left: 60px;
+        }
+
+        .subsection-content ul li ul li {
+	    line-height: 1.3 !important; /* 比一级列表更紧凑 */
+            margin-bottom: 6px !important; /* 更小的垂直间距 */
+            padding-top: 1px !important; /* 微调顶部对齐 */
+            padding-bottom: 1px !important; /* 微调底部对齐 */
+            font-family: "楷体", "KaiTi", "华文楷体", serif !important;
+        }
+
+        .subsection-content ul li ul li::before {
+            content: "";
+	    position: relative;
+            top: -0.1em;
+        }
+
         .time-period {
             display: inline-block;
             background: linear-gradient(to right, #e3f2fd, #e1f5fe);
@@ -343,24 +361,65 @@
     </button>
     
     <header>
-        <h1 class="name">张明</h1>
-        <h2 class="title">高级AI工程师 / 大模型研发专家</h2>
+        <h1 class="name">孙晨曦</h1>
+	<!--
+        <h2 class="title">腾讯混元 / 语音omni</h2>
+	-->
         <div class="contact">
             <div class="contact-item">
-                <i class="fas fa-envelope"></i> zhangming@example.com
+                <i class="fas fa-envelope"></i> 工作地点: 北京
             </div>
             <div class="contact-item">
-                <i class="fas fa-phone"></i> 138-xxxx-xxxx
+                <i class="fas fa-envelope"></i> v13552635119@sina.com
             </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i> 134-3972-4191
+            </div>
+	    <!--
             <div class="contact-item">
                 <i class="fab fa-linkedin"></i> linkedin.com/in/zhangming
             </div>
+	    -->
+	    <!--
             <div class="contact-item">
                 <i class="fab fa-github"></i> github.com/zhangming
             </div>
+	    -->
         </div>
     </header>
+
+    <div class="resume-section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
+            <i class="fas fa-chevron-right arrow expanded"></i>
+        </div>
+        <div class="section-content" style="display: none;">
+            <div class="subsection">
+                <div class="subsection-content">
+                    <p><strong>控制理论与控制工程</strong> | 中国科学院(现中国科学院大学)自动化所 | 2010年 - 2013年 | 工学硕士</p>
+                    <p><strong>自动化</strong> | 南京大学 | 2006年 - 2010年 | 工学学士</p>
+                    
+	            <!--
+                    <div class="time-period" style="margin-top: 16px; margin-bottom: 12px;">专业认证</div>
+                    <ul>
+                        <li>AWS机器学习专家认证</li>
+                        <li>Google TensorFlow开发者认证</li>
+                        <li>NVIDIA深度学习架构师认证</li>
+                    </ul>
+                    
+                    <div class="time-period" style="margin-top: 16px; margin-bottom: 12px;">学术成果</div>
+                    <ul>
+                        <li>ACL、EMNLP、NeurIPS等顶会发表论文8篇</li>
+                        <li>担任多个AI顶会审稿人</li>
+                        <li>参与国家重大AI专项研究</li>
+                    </ul>
+	            -->
+                </div>
+            </div>
+        </div>
+    </div>
     
+    <!--
     <div class="resume-section">
         <div class="section-header" onclick="toggleSection(this)">
             <h2><i class="fas fa-user-tie"></i> 专业技能</h2>
@@ -383,6 +442,7 @@
             </div>
         </div>
     </div>
+    -->
     
     <div class="resume-section" id="llm-section">
         <div class="section-header" onclick="toggleSection(this)">
@@ -392,34 +452,79 @@
         <div class="section-content">
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>首席AI工程师 | 深智科技有限公司</h3>
+                    <h3>腾讯TEG | 混元大模型团队 | 核心成员</h3>
                     <i class="fas fa-chevron-right arrow expanded"></i>
                 </div>
                 <div class="subsection-content">
-                    <span class="time-period">2021年6月 - 至今</span>
+                    <span class="time-period">2024年8月 - 至今 | 语音-文本预训练+对话SFT+RL</span>
                     <ul>
-                        <li>主导设计企业级大语言模型平台，支持动态知识注入与多轮对话管理</li>
-                        <li>优化百亿参数模型推理性能，实现GPU内存占用减少40%，推理速度提升50%</li>
-                        <li>研发领域自适应微调框架，在金融、医疗等垂直领域提升模型专业性</li>
-                        <li>设计多智能体协作架构，解决复杂任务拆解与执行问题</li>
-                        <li>构建模型安全防护体系，通过对抗训练减少幻觉问题发生率70%</li>
+                        <li>对话大模型多阶段continue training的实验设计/数据配比设计/模型训练，同时保证模型不降智</li>
+                        <li>语音对话数据的设计/构建，为更高质量的对话体验做human in the loop的数据构建流程</li>
+			<li>构建评价体系，用deepseek等LLM as reward，量化人工主观标准，用online-DPO兜底对话模型文本内容表现</li>
+                        <li>业绩：
+                            <ul>
+				<li>支持了混元O模型的首次上线</li>
+				<li>主导了语音对话的高沉浸感、拟人性数据设计，为下一代语音对话的体验，做了充足的准备</li>
+                            </ul>
+			</li>
+                    </ul>
+                    <span class="time-period">2024年12月 - 至今 | 强化学习在语音识别/语音对话/语音生成上的探索</span>
+                    <ul>
+                        <li>业界普遍认为语音输出的好坏标准难以做主观拟合，但我组织技术小组，根据 1 万条语音，梳理多场景语音需求，梳理了生成语音 vs 人类语音差异的一套语音评价体系</li>
+                        <li>总结出一套结合语义和语音的可执行的语音caption人工标注流程，可以做到高效标注出语音好坏的优质数据</li>
+			<li>挑战了在最难的自然度/拟人度维度上标注正负例，在5k数据上进行了offline DPO训练，除WER等客观指标外，在语义相关的"自然度/拟人度"方面，有CMOS>0.3明显的提升。在"聊天感"的音色上优势明显。为后续语音reward model的设计提供了指导</li>
+                        <li>复现seed-ASR的WWER 强化学习，通用测试集上WER有5%的相对下降</li>
+                        <li>业绩：
+                            <ul>
+				<li>验证了强化学习在语音生成上的潜力，为将来"基于丰富语音caption和长链的reward model"应用到语音对话/生成提供了实践的可能性</li>
+				<li>强化学习在语音识别任务上带来的收益，支持了混元O模型的首次上线</li>
+                            </ul>
+			</li>
+                    </ul>
+                    <span class="time-period">2024年11月 - 至今 | 流式语音encoder+流式ASR</span>
+                    <ul>
+                        <li>带小组研发基于ssl的流式语音encoder，在多测试集上超越whipser-large encoder部分的性能，从而在encoder+LLM下游任务ASR上达到更优性能</li>
+                        <li>业绩：
+                            <ul>
+				<li>经自研的encoder+LLM续训ASR任务，wer有30%相对优势，由于内容理解正确性提高，间接提高了语音对话质量</li>
+				<li>自监督方案，具有泛化到广义音频理解的潜力，为下一步混元voice模型泛化到音频理解打下一定基础</li>
+                            </ul>
+			</li>
+                    </ul>
+                    <span class="time-period">2024年8月 - 2024年10月 | 数据管线小组的建设和部分管理工作</span>
+                    <ul>
+                        <li>临时带组建设第一套可用的数据管线流程，为千万小时级语音数据积累，打下重要基础</li>
+			<li>串接数据处理管线各个算子，和工程同学合作，充分利用CPU算力和GPU算力，以达到高效数据处理</li>
                     </ul>
                 </div>
             </div>
             
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>大语言模型研究项目</h3>
+                    <h3>腾讯TEG AI平台部 | 语音生成大模型 | 8人leader</h3>
                     <i class="fas fa-chevron-right arrow expanded"></i>
                 </div>
                 <div class="subsection-content">
-                    <span class="time-period">2020年9月 - 2021年5月</span>
+                    <span class="time-period">2023年4月 - 2024年8月 | 研发优化语音大模型</span>
                     <ul>
-                        <li>设计并训练中文基础大模型（参数量13B），在CEval、CMMLU等中文基准测试中排名前5</li>
-                        <li>提出分层知识注入方法，显著提升模型在专业领域的表现</li>
-                        <li>开发高效模型微调算法，在千样本场景下达到全量微调90%性能</li>
-                        <li>构建多维度评估体系，覆盖功能性、安全性、认知能力等12个维度</li>
-                        <li>研究成果发表于ACL、EMNLP等顶会，获两项国家发明专利</li>
+                        <li>数据管线建设: 完成大数据管线处理(下载、切分、降噪、评估、转写、韵律标注等)提效—— 训练提效——评测提效工具链建设</li>
+                        <li>在llama框架上复现vall-e方案, 带团队做改进, 以解决稳定性/音色解耦问题
+                            <ul>
+				<li>音频token BPE压缩, 缩短序列长度, 解决特定问题以降低WER；</li>
+				<li>调整参数topk/topp/repetition penalty, 解决特定问题以降低WER；</li>
+				<li>提高prompt text - prompt speech匹配度降低音色克隆WER；</li>
+				<li>encodec第一层蒸馏hubert, 解耦语义信息, 改善音色解耦水平, 提高音色克隆相似度；</li>
+				<li>引入文本续写+音频续写+TTS预训练, 因具备一定语义理解能力而导致表现力收益；</li>
+				<li>金标-银标-铜标数据配比组合尝试, 模型size摸高, 最大2B dense (实验都是基于V100), 最终取得稳定性-表现力balance；</li>
+                            </ul>
+			</li>
+                        <li>业绩：
+                            <ul>
+				<li>完成 120 万小时(约 320B 个 token)有效可训练数据的积累 (当时在业界较领先)</li>
+				<li>在表现力/语音复刻能力/稳定性(WER 指标)方面，几乎接近业界最领先效果(字节豆包)，与字节 seed 团队当时技术报告对比 具体指标如下(使用与 seedTTS 报告中相同的测试集): WER(字错率，越低越好): 字节 0.87%，我们 1.01%;ICL语音复刻能力/SMOS:字节0.85，我们0.82; 表现力(人工主观指标，越高越好):字节MOS分 4.3，我们4.15</li>
+				<li>2023年终五星；</li>
+                            </ul>
+			</li>
                     </ul>
                 </div>
             </div>
@@ -431,75 +536,240 @@
             <h2><i class="fas fa-layer-group"></i> 大模型之前的工作</h2>
             <i class="fas fa-chevron-right arrow"></i>
         </div>
-        <div class="section-content" style="display: none;">
+        <div class="section-content" style="display: none;" id="previous-work">
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>NLP算法专家 | 讯科人工智能</h3>
+                    <h3>腾讯TEG AI平台部 | 面向游戏的高拟人TTS | 10人leader</h3>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
                 <div class="subsection-content">
-                    <span class="time-period">2018年3月 - 2020年8月</span>
+                    <span class="time-period">2021年12月 - 2023年4月</span>
                     <ul>
-                        <li>构建基于BERT的知识图谱问答系统，准确率达93.5%</li>
-                        <li>设计多任务联合学习框架，统一处理实体识别、关系抽取等任务</li>
-                        <li>优化文本增强流程，解决低资源场景下的模型泛化问题</li>
-                        <li>开发分布式训练平台，缩短模型迭代周期50%</li>
-                        <li>主持NLP技术分享20余场，培养算法工程师10+</li>
+                        <li>带领团队，从0搭建TTS系统，包括前端系统、TTS声学模型、TTS声码器、歌唱合成系统，歌唱-说话统一框架</li>
+                        <li>带领团队，完善完成TTS特征设计、case率降低、表现力提升等工作，达到稳定可用水平</li>
+                        <li>带领团队，推进极高自然度对话TTS方案的研发</li>
+                        <li>业绩：
+                            <ul>
+				<li>从0到1搭建TTS框架和团队建设；
+				<li>高表现力语音生成技术：2022年团队成员高分中一篇interspeech2023；
+				<li>形成一套业务支持解决方案，支持王者荣耀陪玩、元梦之星业务；
+				<li>2022年终五星；
+                            </ul>
+			</li>
                     </ul>
                 </div>
             </div>
             
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>高级软件工程师 | 云创科技</h3>
+                    <h3>百度TPG 语音技术部 | TOB的云上TTS 2.0 | 小组长</h3>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
                 <div class="subsection-content">
-                    <span class="time-period">2016年7月 - 2018年2月</span>
+                    <span class="time-period">2020年3月 - 2021年6月</span>
                     <ul>
-                        <li>构建日处理20TB的分布式数据平台，支持毫秒级查询</li>
-                        <li>设计动态数据管道，实现多源异构数据实时整合</li>
-                        <li>开发高性能实体识别引擎，支持16种语言的并行处理</li>
-                        <li>优化内存管理策略，系统吞吐量提升300%</li>
-                        <li>主导微服务架构转型，系统可用性达99.99%</li>
+                        <li>带领团队，结合细粒度condition控制+注意力优化+基频时长能量控制，将Tacotron2的稳定性达到智能客服领域企业级要求，SER率首次降至低于0.01%(业界最低)</li>
+                        <li>成功上线单模型-多人-双语-多风格可控声学模型，赋能百度云呼叫中心TTS更强的技术竞争力，获得业务方好评和订单</li>
+                        <li>设计了一种声学-声码器交替训练方案，形成一种云端少数据量精品化定制音库的技术方案，获得业务方好评，带来大量订单</li>
+                        <li>业绩：
+                            <ul>
+				<li>彻底解决了SOTA模型Tacotron2的稳定性问题；</li>
+				<li>形成一套双语、多风格、多音色的端到端声学模型框架，该框架可以完成跨语种、风格控制、音色迁移等任务；</li>
+				<li>300句少数据量精品化定制音库的技术方案，让公司语音生成效果在TOB市场更优竞争力；</li>
+                            </ul>
+			</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>百度TPG 语音技术部 | 歌唱合成及音乐生成 | 小组长</h3>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="subsection-content">
+                    <span class="time-period">2020年7月 - 2021年11月</span>
+                    <ul>
+                        <li>带领团队研发歌唱合成技术，完成歌唱合成的数据筛选、清洗，声学模型、声码器的研发和优化，达到业界领先水平</li>
+                        <li>歌唱-说话统一声学模型、歌唱声码器研发，只需20说话数据即可建立唱歌能力，是当时业界SOTA</li>
+                        <li>研发风格可控的歌唱旋律生成以及多轨音乐生成技术</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>百度TPG 语音技术部 | 声音克隆 | 小组长</h3>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="subsection-content">
+                    <span class="time-period">2019年10月 - 2020年5月</span>
+                    <ul>
+                        <li>带领团队，研发多子带RNN通用neural vocoder，大幅提高推理效率，实时率指标提高2倍，上线小度智能音箱</li>
+                        <li>带领团队，将melgan升级为多子带melgan，保持性能的同时模型参数量减少25%，上线到端侧百度地图语音包</li>
+                        <li>业绩：
+                            <ul>
+				<li>业内首次落地全神经网络通用声码器，入围2020年度百度最高奖；</li>
+                            </ul>
+			</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>百度TPG 语音技术部 | 端侧TTS | 小组长</h3>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="subsection-content">
+                    <span class="time-period">2020年4月 - 2020年9月</span>
+                    <ul>
+                        <li>Tacotron2压缩 + 创新提出ddsp+多子带melgan的方式压缩模型，显著降低端侧运行功耗、提高了推理速度，成功落地到百度app端侧和百度地图端侧语音包</li>
+                        <li>业绩：
+                            <ul>
+				<li>业内首个全神经网络语音生成系统在端侧高效部署；</li>
+                            </ul>
+			</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>百度TPG 语音技术部 | TOB的云上TTS 1.0 | 小组长</h3>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="subsection-content">
+                    <span class="time-period">2019年1月 - 2020年1月</span>
+                    <ul>
+                        <li>提出轻量级自回归声学模型Melrnn，自然度接近Tacotron2且简单易训，为公司拿下订单</li>
+                        <li>相同发音人超阿里云竞品 (GSB 0.767：0.232)，并在POC中取得优势，增加公司业务订单</li>
+                        <li>先后落地LPCNet和多子带RNN声码器，兼顾了效率和效果，首次将全深度学习的声学和声码器上线私有云服务，替换全部云服务传统音库，帮助公司品牌升级</li>
+                        <li>业绩：
+                            <ul>
+				<li>在业界没有解决SOTA模型(Tacotron2)稳定性难题的情况下提出了可行的中间方案，完成业务需求且超过竞品，获业务方高度评价；</li>
+                            </ul>
+			</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>百度TPG 语音技术部 | 深度学习语音生成的工业化 | 核心成员</h3>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="subsection-content">
+                    <span class="time-period">2018 - 2019</span>
+                    <ul>
+                        <li>提出并落地了syllable级并行WAVERNN声码器，参与模型调优和工程优化，解决了首包响应时延，在CPU上将实时率降到1以下，当时为业界首次将神经网络声码器落地</li>
+                        <li>业绩：
+                            <ul>
+				<li>该项目使百度成为世界第二、国内首个提供工业级实时深度学习TTS服务的公司，参与其中；</li>
+                            </ul>
+			</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="resume-section" id="llm-section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <h2><i class="fas fa-brain"></i> 学校经历</h2>
+            <i class="fas fa-chevron-right arrow expanded"></i>
+        </div>
+        <div class="section-content">
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>课外项目</h3>
+                    <i class="fas fa-chevron-right arrow expanded"></i>
+                </div>
+                <div class="subsection-content">
+                    <ul>
+                        <li>初代LINUX操作系统内核代码改进:基于Linux0.11内核源码和intelIA32手册，以C和汇编语言重写操作系统，改进了内 核的内存管理</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>嵌入式系统开发(研究生课题)</h3>
+                    <i class="fas fa-chevron-right arrow expanded"></i>
+                </div>
+                <div class="subsection-content">
+                    <ul>
+                        <li>双轮自平衡机器人，传感器、控制算法优化、C语言电机控制程序开发</li>
+                        <li>优化双轮自平衡机器人的平衡站立和行走的稳定性问题</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>南京大学交响乐团</h3>
+                    <i class="fas fa-chevron-right arrow expanded"></i>
+                </div>
+                <div class="subsection-content">
+                    <ul>
+                        <li>南京大学交响乐团重要成员。2007年曾随乐团赴德国莱比锡进行为期10天的交流演出</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="resume-section" id="llm-section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <h2><i class="fas fa-brain"></i> 自我评价</h2>
+            <i class="fas fa-chevron-right arrow expanded"></i>
+        </div>
+        <div class="section-content">
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>专业素质</h3>
+                    <i class="fas fa-chevron-right arrow expanded"></i>
+                </div>
+                <div class="subsection-content">
+                    <ul>
+                        <li>有提出自己新思路的创新意愿和能力，有较强的自驱力和成事的心</li>
+			<li>传统TTS经验8年，大模型一线持续跟进</li>
+			<li>有一定的团队管理经验</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>团队管理</h3>
+                    <i class="fas fa-chevron-right arrow expanded"></i>
+                </div>
+                <div class="subsection-content">
+                    <ul>
+                        <li>在腾讯做过10个人的虚线组长</li>
+                        <li>在百度是6个人研发小组负责人，同时支持2~3个业务方向；期间团队成员均在自己的方向上有优良的产出</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <h3>其他素质</h3>
+                    <i class="fas fa-chevron-right arrow expanded"></i>
+                </div>
+                <div class="subsection-content">
+                    <ul>
+                        <li>自驱力强，积极主动</li>
+                        <li>有一定风险偏好，愿意接受挑战，不给自己设限，有”成功”欲望</li>
+                        <li>对声音敏感，有音乐修养，麦霸，15岁小提琴十级</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="resume-section">
-        <div class="section-header" onclick="toggleSection(this)">
-            <h2><i class="fas fa-graduation-cap"></i> 教育与认证</h2>
-            <i class="fas fa-chevron-right arrow"></i>
-        </div>
-        <div class="section-content" style="display: none;">
-            <div class="subsection">
-                <div class="subsection-content">
-                    <p><strong>计算机科学硕士</strong> | 清华大学人工智能实验室 | 2014年 - 2016年</p>
-                    <p><strong>计算机科学与技术学士</strong> | 上海交通大学 | 2010年 - 2014年</p>
-                    
-                    <div class="time-period" style="margin-top: 16px; margin-bottom: 12px;">专业认证</div>
-                    <ul>
-                        <li>AWS机器学习专家认证</li>
-                        <li>Google TensorFlow开发者认证</li>
-                        <li>NVIDIA深度学习架构师认证</li>
-                    </ul>
-                    
-                    <div class="time-period" style="margin-top: 16px; margin-bottom: 12px;">学术成果</div>
-                    <ul>
-                        <li>ACL、EMNLP、NeurIPS等顶会发表论文8篇</li>
-                        <li>担任多个AI顶会审稿人</li>
-                        <li>参与国家重大AI专项研究</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     
     <footer>
-        <p>© 2024 张明的简历 | 本简历使用HTML5实现，支持响应式浏览与PDF导出</p>
-        <p style="margin-top: 6px; font-size: 0.85rem;">最后更新：2024年3月</p>
+        <p>© 2025 孙晨曦的简历 | 本简历使用HTML5实现，支持响应式浏览与PDF导出</p>
+        <p style="margin-top: 6px; font-size: 0.85rem;">最后更新：2025年6月</p>
     </footer>
     
     <script>
@@ -509,6 +779,12 @@
             const llmSection = document.getElementById('llm-section');
             const llmContent = llmSection.querySelector('.section-content');
             llmContent.style.display = 'block';
+	
+            const educationSection = document.querySelector('.resume-section');
+            const eduContent = educationSection.querySelector('.section-content');
+            eduContent.style.display = 'block';
+            // 设置展开箭头样式
+            educationSection.querySelector('.arrow').classList.add('expanded');
             
             // 展开所有子部分
             const llmSubsections = llmSection.querySelectorAll('.subsection-content');
@@ -525,8 +801,17 @@
             // 折叠其他部分的箭头
             const otherArrows = document.querySelectorAll('.resume-section:not(#llm-section) .arrow');
             otherArrows.forEach(arrow => arrow.classList.remove('expanded'));
+
+            const previousWorkSection = document.getElementById('previous-work');
+            if (previousWorkSection) {
+                const subsections = previousWorkSection.querySelectorAll('.subsection-content');
+                subsections.forEach(sub => sub.style.display = 'none');
+
+                const arrows = previousWorkSection.querySelectorAll('.arrow');
+                arrows.forEach(arrow => arrow.classList.remove('expanded'));
+            }
         });
-        
+
         // 折叠/展开主部分
         function toggleSection(element) {
             const section = element.closest('.resume-section');
