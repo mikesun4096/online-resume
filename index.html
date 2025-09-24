@@ -369,7 +369,7 @@
     </button>
     
     <header>
-        <h1 class="name">孙晨曦</h1>
+        <h1 class="name">刘煜</h1>
 	<!--
         <h2 class="title">腾讯混元 / 语音omni</h2>
 	-->
@@ -464,30 +464,38 @@
                     <i class="fas fa-chevron-right arrow expanded"></i>
                 </div>
                 <div class="subsection-content">
-                    <span class="time-period">2024年8月 - 至今 | 语音-文本预训练+对话SFT+初步RL探索 支持元宝方业务落地</span>
+                    <span class="time-period">2024年8月 - 至今 | 语音-文本预训练+对话SFT+RL</span>
                     <ul>
                         <li>对话大模型多阶段continue training的实验设计/数据配比设计/模型训练，同时保证模型不降智</li>
                         <li>语音对话数据的设计/构建，为更高质量的对话体验做human in the loop的数据构建流程</li>
-			<li>构建评价体系，用deepseek等LLM as reward，量化人工主观标准，用DPO兜底对话模型文本内容表现</li>
-			<li>合成数据在语音对话上的充分探索</li>
+			<li>构建评价体系，用deepseek等LLM as reward，量化人工主观标准，用online-DPO兜底对话模型文本内容表现</li>
                         <li>业绩：
                             <ul>
 				<li>支持了混元O模型的首次上线</li>
-				<li>语音对话的高沉浸感、拟人性数据设计，为下一代语音对话的体验，做了充足的准备</li>
+				<li>主导了语音对话的高沉浸感、拟人性数据设计，为下一代语音对话的体验，做了充足的准备</li>
                             </ul>
 			</li>
                     </ul>
-                    <span class="time-period">2024年12月 - 至今 | 强化学习在语音对话/语音生成上的探索</span>
+                    <span class="time-period">2024年12月 - 至今 | 强化学习在语音识别/语音对话/语音生成上的探索</span>
                     <ul>
-                        <li>业界普遍认为语音输出的好坏标准难以做主观拟合，但我组织小组，根据 1 万条语音，梳理多场景语音需求，梳理了生成语音 vs 人类语音差异的一套语音评价体系</li>
+                        <li>业界普遍认为语音输出的好坏标准难以做主观拟合，但我组织技术小组，根据 1 万条语音，梳理多场景语音需求，梳理了生成语音 vs 人类语音差异的一套语音评价体系</li>
                         <li>总结出一套结合语义和语音的可执行的语音caption人工标注流程，可以做到高效标注出语音好坏的优质数据</li>
 			<li>挑战了在最难的自然度/拟人度维度上标注正负例，在5k数据上进行了offline DPO训练，除WER等客观指标外，在语义相关的"自然度/拟人度"方面，有CMOS>0.3明显的提升。在"聊天感"的音色上优势明显。为后续语音reward model的设计提供了指导</li>
-                        <li>客观指标优化LLM语音生成: GRPO + WER/声纹/MOS/自研韵律表征作为RLVR的充分探索</li>
-                        <li>RLAIF在语音对话上的各项探索</li>
+                        <li>复现seed-ASR的WWER 强化学习，通用测试集上WER有5%的相对下降</li>
                         <li>业绩：
                             <ul>
-				<li>验证了强化学习在语音生成上的潜力，积累了扎实的认知，为将来"基于丰富语音caption和长链的reward model"应用到语音对话/生成提供了实践的可能性</li>
-				<li>在RLAIF for 语音对话，尤其是RLAIF for "智商"+"情商"的对话系统积累了相对丰富的经验</li>
+				<li>验证了强化学习在语音生成上的潜力，为将来"基于丰富语音caption和长链的reward model"应用到语音对话/生成提供了实践的可能性</li>
+				<li>强化学习在语音识别任务上带来的收益，支持了混元O模型的首次上线</li>
+                            </ul>
+			</li>
+                    </ul>
+                    <span class="time-period">2024年11月 - 至今 | 流式语音encoder+流式ASR</span>
+                    <ul>
+                        <li>带小组研发基于ssl的流式语音encoder，在多测试集上超越whipser-large encoder部分的性能，从而在encoder+LLM下游任务ASR上达到更优性能</li>
+                        <li>业绩：
+                            <ul>
+				<li>经自研的encoder+LLM续训ASR任务，wer相对whisper-large-v3+LLM有10%相对优势，由于内容理解正确性提高，间接提高了语音对话质量</li>
+				<li>自监督方案，具有泛化到广义音频理解的潜力，为下一步混元voice模型泛化到音频理解打下一定基础</li>
                             </ul>
 			</li>
                     </ul>
@@ -501,7 +509,7 @@
             
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>腾讯TEG AI平台部 | 语音生成大模型 | 10人leader</h3>
+                    <h3>腾讯TEG AI平台部 | 语音生成大模型 | 8人leader</h3>
                     <i class="fas fa-chevron-right arrow expanded"></i>
                 </div>
                 <div class="subsection-content">
@@ -562,7 +570,7 @@
             
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>百度TPG 语音技术部 | TOB的云上TTS 2.0 | 虚线组长</h3>
+                    <h3>百度TPG 语音技术部 | TOB的云上TTS 2.0 | 小组长</h3>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
                 <div class="subsection-content">
