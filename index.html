@@ -369,7 +369,7 @@
     </button>
     
     <header>
-        <h1 class="name">Someone</h1>
+        <h1 class="name">孙晨曦</h1>
 	<!--
         <h2 class="title">腾讯混元 / 语音omni</h2>
 	-->
@@ -378,7 +378,7 @@
                 <i class="fas fa-envelope"></i> 工作地点: 北京
             </div>
             <div class="contact-item">
-                <i class="fas fa-envelope"></i> v13552635119@sina.com
+                <i class="fas fa-envelope"></i> mikesun4096@gmail.com
             </div>
             <div class="contact-item">
                 <i class="fas fa-phone"></i> 134-3972-4191
@@ -395,37 +395,6 @@
 	    -->
         </div>
     </header>
-
-    <div class="resume-section">
-        <div class="section-header" onclick="toggleSection(this)">
-            <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
-            <i class="fas fa-chevron-right arrow expanded"></i>
-        </div>
-        <div class="section-content" style="display: none;">
-            <div class="subsection">
-                <div class="subsection-content">
-                    <p>中国科学院(现中国科学院大学)自动化所 | 2010年 - 2013年 | 工学硕士</p>
-                    <p>南京大学(C9) | 2006年 - 2010年 | 工学学士</p>
-                    
-	            <!--
-                    <div class="time-period" style="margin-top: 16px; margin-bottom: 12px;">专业认证</div>
-                    <ul>
-                        <li>AWS机器学习专家认证</li>
-                        <li>Google TensorFlow开发者认证</li>
-                        <li>NVIDIA深度学习架构师认证</li>
-                    </ul>
-                    
-                    <div class="time-period" style="margin-top: 16px; margin-bottom: 12px;">学术成果</div>
-                    <ul>
-                        <li>ACL、EMNLP、NeurIPS等顶会发表论文8篇</li>
-                        <li>担任多个AI顶会审稿人</li>
-                        <li>参与国家重大AI专项研究</li>
-                    </ul>
-	            -->
-                </div>
-            </div>
-        </div>
-    </div>
     
     <!--
     <div class="resume-section">
@@ -464,28 +433,30 @@
                     <i class="fas fa-chevron-right arrow expanded"></i>
                 </div>
                 <div class="subsection-content">
-                    <span class="time-period">2024年8月 - 至2025年6月 | 语音-文本预训练+对话SFT+RL</span>
+                    <span class="time-period">2024年12月 - 至今 | 强化学习在语音对话/语音生成/语音识别上的探索</span>
                     <ul>
-                        <li>对话大模型多阶段continue training的实验设计/数据配比设计/模型训练，同时保证模型不降智</li>
-                        <li>语音对话数据的设计/构建，为更高质量的对话体验做human in the loop的数据构建流程</li>
-			<li>构建评价体系，用deepseek等LLM as reward，量化人工主观标准，用online-DPO兜底对话模型文本内容表现</li>
+                        <li>业界普遍认为语音输出的好坏标准难以做主观拟合，但我组织小组，根据 1 万条语音，梳理多场景语音需求，梳理了生成语音 vs 人类语音差异的一套语音评价体系，及其对应的"人工"思维链reward体系</li>
+			<li>挑战了在最难的自然度/拟人度维度上标注正负例，在5k数据上进行了offline DPO训练，除WER等客观指标外，在语义相关的"自然度/拟人度"方面，有CMOS>0.3明显的提升。在"聊天感"的音色上优势明显。为后续语音reward model的设计提供了指导</li>
+                        <li>RLVR优化LLM based TTS: GRPO + WER/声纹/MOS/自研韵律表征 as reward，对齐业界最佳标准</li>
+                        <li>复现seed-ASR的WWER 强化学习，通用测试集上WER有5%的相对下降</li>
+                        <li>为解决RLVR在开放对话的局限性，基于LLM rubrics based checklist/SFT critic model/human simulator的探索，使用GRPO训练————结果:通用benchmark不掉点的情况下，"活人感"显著提高/li>
                         <li>业绩：
                             <ul>
-				<li>支持了混元O模型的首次上线</li>
-				<li>主导了语音对话的高沉浸感、拟人性数据设计，为下一代语音对话的体验，做了充足的准备</li>
+				<li>验证了强化学习在语音生成上的潜力，积累了扎实的认知，为将来"基于丰富语音caption和长链的reward model"应用到语音对话/生成提供了实践的可能性</li>
+				<li>在"RLAIF"做了充分的探索，有效提高reward model泛化能力和与人类一致性，为弥补RLVR的局限性积累了一定经验</li>
                             </ul>
 			</li>
                     </ul>
-                    <span class="time-period">2024年12月 - 至今 | 强化学习在语音识别/语音对话/语音生成上的探索</span>
+                    <span class="time-period">2024年8月 - 2025年6月 | 语音-文本预训练+对话SFT+初步RL探索 支持元宝方业务落地</span>
                     <ul>
-                        <li>业界普遍认为语音输出的好坏标准难以做主观拟合，但我组织技术小组，根据 1 万条语音，梳理多场景语音需求，梳理了生成语音 vs 人类语音差异的一套语音评价体系</li>
-                        <li>总结出一套结合语义和语音的可执行的语音caption人工标注流程，可以做到高效标注出语音好坏的优质数据</li>
-			<li>挑战了在最难的自然度/拟人度维度上标注正负例，在5k数据上进行了offline DPO训练，除WER等客观指标外，在语义相关的"自然度/拟人度"方面，有CMOS>0.3明显的提升。在"聊天感"的音色上优势明显。为后续语音reward model的设计提供了指导</li>
-                        <li>复现seed-ASR的WWER 强化学习，通用测试集上WER有5%的相对下降</li>
+                        <li>对话大模型多阶段continue training的实验设计/数据配比设计/模型训练，同时保证模型不降智</li>
+                        <li>语音对话数据的设计/构建，为更高质量的对话体验做human in the loop的数据构建流程</li>
+			<li>构建评价体系，用deepseek等LLM as reward，量化人工主观标准，用DPO兜底对话模型文本内容表现</li>
+			<li>合成数据在语音对话上的充分探索</li>
                         <li>业绩：
                             <ul>
-				<li>验证了强化学习在语音生成上的潜力，为将来"基于丰富语音caption和长链的reward model"应用到语音对话/生成提供了实践的可能性</li>
-				<li>强化学习在语音识别任务上带来的收益，支持了混元O模型的首次上线</li>
+				<li>支持了混元O模型的首次上线</li>
+				<li>语音对话的高沉浸感、拟人性数据设计，为下一代语音对话的体验，做了充足的准备</li>
                             </ul>
 			</li>
                     </ul>
@@ -509,21 +480,21 @@
             
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>腾讯TEG AI平台部 | 语音生成大模型 | 8人leader</h3>
+                    <h3>腾讯TEG AI平台部 | 语音生成大模型 | 10人leader</h3>
                     <i class="fas fa-chevron-right arrow expanded"></i>
                 </div>
                 <div class="subsection-content">
                     <span class="time-period">2023年4月 - 2024年8月 | 研发优化语音大模型</span>
                     <ul>
                         <li>数据管线建设: 完成大数据管线处理(下载、切分、降噪、评估、转写、韵律标注等)提效—— 训练提效——评测提效工具链建设</li>
-                        <li>在llama框架上复现vall-e方案, 带团队做改进, 以解决稳定性/音色解耦问题
+                        <li>在llama框架上复现vall-e方案，带团队做改进，以解决稳定性/音色解耦问题
                             <ul>
-				<li>音频token BPE压缩, 缩短序列长度, 解决特定问题以降低WER；</li>
-				<li>调整参数topk/topp/repetition penalty, 解决特定问题以降低WER；</li>
+				<li>音频token BPE压缩，缩短序列长度，解决特定问题以降低WER；</li>
+				<li>调整参数topk/topp/repetition penalty，解决特定问题以降低WER；</li>
 				<li>提高prompt text - prompt speech匹配度降低音色克隆WER；</li>
-				<li>encodec第一层蒸馏hubert, 解耦语义信息, 改善音色解耦水平, 提高音色克隆相似度；</li>
-				<li>引入文本续写+音频续写+TTS预训练, 因具备一定语义理解能力而导致表现力收益；</li>
-				<li>金标-银标-铜标数据配比组合尝试, 模型size摸高, 最大2B dense (实验都是基于V100), 最终取得稳定性-表现力balance；</li>
+				<li>encodec第一层蒸馏hubert，解耦语义信息，改善音色解耦水平，提高音色克隆相似度；</li>
+				<li>引入文本续写+音频续写+TTS预训练，因具备一定语义理解能力而导致表现力收益；</li>
+				<li>金标-银标-铜标数据配比组合尝试，模型size摸高，最大2B dense (实验都是基于V100)，最终取得稳定性-表现力balance；</li>
                             </ul>
 			</li>
                         <li>业绩：
@@ -570,7 +541,7 @@
             
             <div class="subsection">
                 <div class="subsection-header" onclick="toggleSubsection(this)">
-                    <h3>百度TPG 语音技术部 | TOB的云上TTS 2.0 | 小组长</h3>
+                    <h3>百度TPG 语音技术部 | TOB的云上TTS 2.0 | 虚线组长</h3>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
                 <div class="subsection-content">
@@ -697,6 +668,37 @@
             </div>
         </div>
     </div>
+
+    <div class="resume-section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
+            <i class="fas fa-chevron-right arrow expanded"></i>
+        </div>
+        <div class="section-content" style="display: none;">
+            <div class="subsection">
+                <div class="subsection-content">
+		    <p><strong>中国科学院(现中国科学院大学)自动化所</strong> | 2010年 - 2013年 | 工学硕士</p>
+                    <p><strong>南京大学(C9)</strong> | 2006年 - 2010年 | 工学学士</p>
+                    
+	            <!--
+                    <div class="time-period" style="margin-top: 16px; margin-bottom: 12px;">专业认证</div>
+                    <ul>
+                        <li>AWS机器学习专家认证</li>
+                        <li>Google TensorFlow开发者认证</li>
+                        <li>NVIDIA深度学习架构师认证</li>
+                    </ul>
+                    
+                    <div class="time-period" style="margin-top: 16px; margin-bottom: 12px;">学术成果</div>
+                    <ul>
+                        <li>ACL、EMNLP、NeurIPS等顶会发表论文8篇</li>
+                        <li>担任多个AI顶会审稿人</li>
+                        <li>参与国家重大AI专项研究</li>
+                    </ul>
+	            -->
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="resume-section" id="school-section">
         <div class="section-header" onclick="toggleSection(this)">
             <h2><i class="fas fa-graduation-cap"></i> 学校经历</h2>
@@ -792,8 +794,8 @@
     
     
     <footer>
-        <p>© 2025 someone的简历 | 本简历使用HTML5实现，支持响应式浏览与PDF导出</p>
-        <p style="margin-top: 6px; font-size: 0.85rem;">最后更新：2025年6月</p>
+        <p>© 2025 孙晨曦的简历 | 本简历使用HTML5实现，支持响应式浏览与PDF导出</p>
+        <p style="margin-top: 6px; font-size: 0.85rem;">最后更新：2025年8月</p>
     </footer>
     
     <script>
