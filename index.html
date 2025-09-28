@@ -439,7 +439,7 @@
 			<li>挑战了在最难的自然度/拟人度维度上标注正负例，在5k数据上进行了offline DPO训练，除WER等客观指标外，在语义相关的"自然度/拟人度"方面，有CMOS>0.3明显的提升。在"聊天感"的音色上优势明显。为后续语音reward model的设计提供了指导</li>
                         <li>RLVR优化LLM based TTS: GRPO + WER/声纹/MOS/自研韵律表征 as reward，对齐业界最佳标准</li>
                         <li>复现seed-ASR的WWER 强化学习，通用测试集上WER有5%的相对下降</li>
-                        <li>为解决RLVR在开放对话的局限性，基于LLM rubrics based checklist/SFT critic model/human simulator的探索，使用GRPO训练————结果:通用benchmark不掉点的情况下，"活人感"显著提高/li>
+                        <li>为解决RLVR在开放对话的局限性，基于LLM rubrics based checklist/SFT critic model/human simulator的探索，使用GRPO训练————结果:通用benchmark不掉点的情况下，"活人感"显著提高</li>
                         <li>业绩：
                             <ul>
 				<li>验证了强化学习在语音生成上的潜力，积累了扎实的认知，为将来"基于丰富语音caption和长链的reward model"应用到语音对话/生成提供了实践的可能性</li>
